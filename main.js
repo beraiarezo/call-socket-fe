@@ -3,12 +3,28 @@ const remoteVideo = document.getElementById("remoteVideo");
 
 const localPeerConnection = new RTCPeerConnection({
   iceServers: [
-    { urls: "stun:stun.l.google.com:19302" },
-    // Replace with your TURN server credentials if needed
     {
-      urls: "turn:turn.anyfirewall.com:443?transport=tcp",
-      username: "webrtc",
-      credential: "webrtc",
+      urls: "stun:stun.relay.metered.ca:80",
+    },
+    {
+      urls: "turn:global.relay.metered.ca:80",
+      username: "12d6b07bdfd822e966c31252",
+      credential: "34t0s95veiEbJNif",
+    },
+    {
+      urls: "turn:global.relay.metered.ca:80?transport=tcp",
+      username: "12d6b07bdfd822e966c31252",
+      credential: "34t0s95veiEbJNif",
+    },
+    {
+      urls: "turn:global.relay.metered.ca:443",
+      username: "12d6b07bdfd822e966c31252",
+      credential: "34t0s95veiEbJNif",
+    },
+    {
+      urls: "turns:global.relay.metered.ca:443?transport=tcp",
+      username: "12d6b07bdfd822e966c31252",
+      credential: "34t0s95veiEbJNif",
     },
   ],
 });
