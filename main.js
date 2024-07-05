@@ -5,7 +5,11 @@ const localPeerConnection = new RTCPeerConnection({
   iceServers: [
     { urls: "stun:stun.l.google.com:19302" },
     // Replace with your TURN server credentials if needed
-    // { urls: 'turn:your.turn.server:3478', username: 'user', credential: 'pass' }
+    {
+      urls: "turn:turn.anyfirewall.com:443?transport=tcp",
+      username: "webrtc",
+      credential: "webrtc",
+    },
   ],
 });
 
