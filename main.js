@@ -11,6 +11,7 @@ const localPeerConnection = new RTCPeerConnection({
 
 const socket = new WebSocket("https://reel-call-76d923366ef0.herokuapp.com/");
 
+console.log(socket, "sockket");
 socket.onmessage = async (message) => {
   const data = JSON.parse(message.data);
 
