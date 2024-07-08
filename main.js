@@ -24,30 +24,6 @@ const localPeerConnection = new RTCPeerConnection({
       username: "username1",
       credential: "password1",
     },
-
-    // {
-    //   urls: "stun:stun.relay.metered.ca:80",
-    // },
-    // {
-    //   urls: "turn:global.relay.metered.ca:80",
-    //   username: "12d6b07bdfd822e966c31252",
-    //   credential: "34t0s95veiEbJNif",
-    // },
-    // {
-    //   urls: "turn:global.relay.metered.ca:80?transport=tcp",
-    //   username: "12d6b07bdfd822e966c31252",
-    //   credential: "34t0s95veiEbJNif",
-    // },
-    // {
-    //   urls: "turn:global.relay.metered.ca:443",
-    //   username: "12d6b07bdfd822e966c31252",
-    //   credential: "34t0s95veiEbJNif",
-    // },
-    // {
-    //   urls: "turns:global.relay.metered.ca:443?transport=tcp",
-    //   username: "12d6b07bdfd822e966c31252",
-    //   credential: "34t0s95veiEbJNif",
-    // },
   ],
 });
 
@@ -100,4 +76,17 @@ async function startCall() {
   socket.send(JSON.stringify({ offer }));
 }
 
-startCall();
+function sendMessage(message) {
+  if (socket.readyState === WebSocket.OPEN) {
+    socket.send(JSON.stringify(message));
+  } else {
+    console.error("WebSocket connection is not open.");
+  }
+}
+
+socket.onopen = async () => {
+  console.log("WebSocket connection established.");
+  startCall(); // Start the call once WebSocket is open
+};
+
+// startCall();
